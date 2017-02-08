@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/register', function() {
-    return view('register');
+Route::get('/sign_up', [
+    'uses' => 'UserController@indexSignUp',
+    'as' => 'sign_up'
+]);
+
+Route::post('/sign_up',[
+    'uses' => 'UserController@postSignUp',
+    'as' => 'sign_up'
+]);
+
+Route::get('/dashboard',function(){
+    return view('layouts/dashboard');
 });

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>SROP | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -37,6 +37,7 @@
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form action="../../index2.html" method="post">
+    {{csrf_field()}}
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="username" name="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -56,7 +57,7 @@
       </div>
     </form>
 
-    <a href="{{url('/register')}}" class="text-center">Register a new membership</a>
+    <a href="{{route('sign_up')}}" class="text-center">Register a new membership</a>
 
   </div>
   <!-- /.login-box-body -->
