@@ -29,14 +29,23 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
   <div class="login-logo">
-    <a href="../../index2.html"><b>SRO</b> PLN</a>
+    <a href="{{url('/')}}"><b>SRO</b> PLN</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="{{route('sign_in')}}" method="post">
     {{csrf_field()}}
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="username" name="username">

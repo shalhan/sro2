@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use App\User;
+use Auth;
+use Validator;
 
 class UserController extends Controller
 {
@@ -14,7 +18,7 @@ class UserController extends Controller
     public function postSignUp(Request $r){
         $this->validate($r,[
             'username' => 'required|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required',
             'name' => 'required',
             'nip' => 'required',
             'position' => 'required'
@@ -30,6 +34,56 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->url('/dashboard');
+        return redirect('/');
+    }
+
+    public function indexSignIn(){
+
+    }
+
+    public function postSignIn(Request $r){
+        $rules = array(
+            'username'    => 'required', 
+             'password' => 'required|min:3'
+        );
+
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::to('/')
+                ->withErrors($validator) // send back all errors to the login form
+                ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+        } else {
+            // create our user data for the authentication
+            $userdata = array(
+                'username'     => Input::get('username'),
+                'password'  => Input::get('password')
+            );
+
+            if (Auth::attempt($userdata)) {
+                return Redirect::to('/dashboard');
+           } else { 
+                return Redirect::to('/');
+            }
+        }
+
+        // $this->validate($r,[
+        //     'username' => 'required',
+        //     'password' => 'required'
+        // ]);
+
+        // if(Auth::attempt( ['username' => $r->input('username'), 'password' => $r->input('password')] )){
+        // //   return redirect()->url('/dashboard');
+        //     echo "yeay";
+        // }else{
+        //     echo "huft";
+        // }
+
+        // return redirect()->back();
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect('/');
     }
 }
