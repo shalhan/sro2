@@ -30,4 +30,13 @@ class RestitutionController extends Controller
 
         return redirect('/');
     }
+
+    public function updateRestitution($id){
+        $restitution = Restitution::where('id', $id)->first();
+        $stat = $restitution->stat_id;
+        $stat++;
+        Restitution::where('id', $id)->update(['stat_id' => $stat]);
+        
+        return redirect('/');
+    }
 }

@@ -49,13 +49,11 @@ Route::group(['middleware' => 'auth'], function(){
             'uses' => 'RestitutionController@createRestitution',
             'as' => 'create'
         ]);
-    });
-   
 
-    Route::get('sign_out', [
-        'uses' => 'UserController@getLogout',
-        'as' => 'sign_out'
-    ]);
+        Route::get('/update/{id}', [
+            'uses' => 'RestitutionController@updateRestitution',
+        ]);
+    });
 
      Route::get('sign_out', [
         'uses' => 'UserController@getLogout',

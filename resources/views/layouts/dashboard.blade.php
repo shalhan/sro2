@@ -29,10 +29,10 @@
                         <tr>   
                             <td>{{$r->user->name}}</td>
                             <td>{{$r->user->nip}}</td>
-                            <td>{{$r->user->name}}</td>
+                            <td>{{$r->user->position}}</td>
                             <td>{{$r->title}}</td>
                             <td>{{$r->stat->id}}. {{$r->stat->detail}}</td>
-                            <td></td>
+                            <td><a href="{{url('dashboard/update/' . $r->id)}}"> NEXT </a></td>
                         </tr>
                         @endforeach
                     </tbody>
