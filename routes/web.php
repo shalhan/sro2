@@ -10,31 +10,37 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'guest'], function(){
+    Route::get('/', function () {
+        return view('login');
+    });
 
-Route::get('/', function () {
-    return view('login');
+    Route::post('/sign_in',[
+        'uses' => 'UserController@postSignIn',
+        'as' => 'sign_in'
+    ]);
+
+    Route::get('/sign_up', [
+        'uses' => 'UserController@indexSignUp',
+        'as' => 'sign_up'
+    ]);
+
+    Route::post('/sign_up',[
+        'uses' => 'UserController@postSignUp',
+        'as' => 'sign_up'
+    ]);
+
 });
 
-Route::post('/sign_in',[
-    'uses' => 'UserController@postSignIn',
-    'as' => 'sign_in'
-]);
 
-Route::get('/sign_up', [
-    'uses' => 'UserController@indexSignUp',
-    'as' => 'sign_up'
-]);
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard',function(){
+        return view('layouts/dashboard');
+    });
 
-Route::post('/sign_up',[
-    'uses' => 'UserController@postSignUp',
-    'as' => 'sign_up'
-]);
-
-Route::get('/dashboard',function(){
-    return view('layouts/dashboard');
+    Route::get('sign_out', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'sign_out'
+    ]);
 });
-
-Route::get('sign_out', [
-    'uses' => 'UserController@getLogout',
-    'as' => 'sign_out'
-]);
+    
