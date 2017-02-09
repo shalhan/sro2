@@ -9,7 +9,7 @@ use App\Restitution;
 class RestitutionController extends Controller
 {   
     public function getAllRestitution(){
-        $restitution = Restitution::with(['user','stat'])->get();
+        $restitution = Restitution::with(['user','stat'])->whereRaw('stat_id < 12')->get();
         
         return view('layouts/dashboard', compact('restitution'));
     }

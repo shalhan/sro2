@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\User;
 use Auth;
 use Validator;
+use Session;
 
 class UserController extends Controller
 {
@@ -47,7 +48,6 @@ class UserController extends Controller
              'password' => 'required|min:3'
         );
 
-
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
             return Redirect::to('/')
@@ -61,29 +61,19 @@ class UserController extends Controller
             );
 
             if (Auth::attempt($userdata)) {
+                $user = Auth::user();
+                Session::put('name', $user->name);    
                 return Redirect::to('/dashboard');
            } else { 
                 return Redirect::to('/');
             }
         }
 
-        // $this->validate($r,[
-        //     'username' => 'required',
-        //     'password' => 'required'
-        // ]);
-
-        // if(Auth::attempt( ['username' => $r->input('username'), 'password' => $r->input('password')] )){
-        // //   return redirect()->url('/dashboard');
-        //     echo "yeay";
-        // }else{
-        //     echo "huft";
-        // }
-
-        // return redirect()->back();
     }
 
     public function getLogout(){
         Auth::logout();
+        Session::flush();
         return redirect('/');
     }
 }
