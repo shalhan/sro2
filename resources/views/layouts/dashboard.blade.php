@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="floating-button">
-        <a href=""><i class="ion ion-plus-circled"></i></a>
+        <a href="{{route('new')}}"><i class="ion ion-plus-circled"></i></a>
     </div>
 </div>
 @endsection
