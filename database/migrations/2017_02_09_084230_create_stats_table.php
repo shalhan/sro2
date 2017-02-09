@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnToUsersTable extends Migration
+class CreateStatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('nip');
-            $table->string('position');
+        Schema::create('stats', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('detail');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +27,6 @@ class AddColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-              $table->dropColumn(['nip', 'position']);
-        });
+        Schema::dropIfExists('stats');
     }
 }

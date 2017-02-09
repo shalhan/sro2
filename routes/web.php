@@ -34,11 +34,30 @@ Route::group(['middleware' => 'guest'], function(){
 
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard',function(){
-        return view('layouts/dashboard');
+    Route::group(['prefix' => 'dashboard'], function () {
+        Route::get('/',[
+            'uses' => 'RestitutionController@getAllRestitution',
+            'as' => '/'
+        ]);
+
+        Route::get('/new', [
+            'uses' => 'RestitutionController@newRestitution',
+            'as' => 'new'
+        ]);
+
+        Route::post('/create', [
+            'uses' => 'RestitutionController@createRestitution',
+            'as' => 'create'
+        ]);
     });
+   
 
     Route::get('sign_out', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'sign_out'
+    ]);
+
+     Route::get('sign_out', [
         'uses' => 'UserController@getLogout',
         'as' => 'sign_out'
     ]);
