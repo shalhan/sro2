@@ -62,8 +62,13 @@ class UserController extends Controller
 
             if (Auth::attempt($userdata)) {
                 $user = Auth::user();
-                Session::put('name', $user->name);    
-                return Redirect::to('/dashboard');
+                Session::put('name', $user->name);
+                Session::put('id', $user->id);
+                if($user->roles == true){
+                    return Redirect::to('/dashboard');                
+                }else{
+                     return redirect('/home/user=' . Session::get('id'));
+                }
            } else { 
                 return Redirect::to('/');
             }

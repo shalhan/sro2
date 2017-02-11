@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Restitution;
+use Session;
 
 class RestitutionController extends Controller
 {   
@@ -38,5 +39,11 @@ class RestitutionController extends Controller
         Restitution::where('id', $id)->update(['stat_id' => $stat]);
         
         return redirect('/');
+    }
+
+    public function showRestitution($id){
+       $restitution = Restitution::with(['user','stat'])->whereRaw('user_id =' . Session::get('id'))->get();
+       
+       return view('layouts/home', compact('restitution'));
     }
 }

@@ -55,9 +55,16 @@ Route::group(['middleware' => 'auth'], function(){
         ]);
     });
 
+    Route::group(['prefix' => 'home'], function () {
+         Route::get('/user={id}',[
+            'uses' => 'RestitutionController@showRestitution',
+        ]);
+    });
+
      Route::get('sign_out', [
         'uses' => 'UserController@getLogout',
         'as' => 'sign_out'
     ]);
+
 });
     
