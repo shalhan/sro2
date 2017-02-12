@@ -22,7 +22,12 @@ Progress Restitusi
                 <span class="label label-warning pull-right">On Progress...</span></strong>
                 @endif
                 <p class="text-muted">
-                {{$r->stat->detail}}<i class="fa fa-time pull-right"></i>
+                    {{$r->stat->detail}}
+                    @if($r->stat_id == 12)
+                    <span class="pull-right"><i class="fa fa-exclamation-circle"></i> REPORT</span>
+                    @else
+                    <a href="{{ url('home/report=' . $r->id) }}" class="pull-right"><i class="fa fa-exclamation-circle"></i> REPORT</a>                    
+                    @endif 
                 </p>
                 <hr>
                 @endforeach

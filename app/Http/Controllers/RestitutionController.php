@@ -42,7 +42,10 @@ class RestitutionController extends Controller
     }
 
     public function showRestitution($id){
-       $restitution = Restitution::with(['user','stat'])->whereRaw('user_id =' . Session::get('id'))->get();
+       $restitution = Restitution::with(['user','stat'])
+        ->whereRaw('user_id =' . Session::get('id'))
+        ->orderBy('id','desc')
+        ->get();
        
        return view('layouts/home', compact('restitution'));
     }

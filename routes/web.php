@@ -59,6 +59,14 @@ Route::group(['middleware' => 'auth'], function(){
          Route::get('/user={id}',[
             'uses' => 'RestitutionController@showRestitution',
         ]);
+
+        Route::get('/report={id}',[
+            'uses' => 'ReportController@newReport'
+        ]);
+
+        Route::post('/report={id}/create',[
+            'uses' => 'ReportController@createReport'
+        ]);
     });
 
      Route::get('sign_out', [

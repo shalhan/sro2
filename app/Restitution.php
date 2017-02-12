@@ -19,4 +19,9 @@ class Restitution extends Model
     {
         return $this->belongsTo('App\Stat');
     }
+
+    public function report()
+    {
+        return $this->hasMany('App\Message');
+    }
 }
