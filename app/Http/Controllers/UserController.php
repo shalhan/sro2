@@ -17,6 +17,8 @@ class UserController extends Controller
     }
 
     public function postSignUp(Request $r){
+        $roles = false;
+
         $this->validate($r,[
             'username' => 'required|unique:users',
             'password' => 'required',
@@ -30,7 +32,7 @@ class UserController extends Controller
             'nip' => $r->input('nip'),
             'position' => $r->input('position'),
             'username' => $r->input('username'),
-            'password' => bcrypt($r->input('password'))
+            'password' => bcrypt($r->input('password')),
         ]);
 
         $user->save();
@@ -65,6 +67,7 @@ class UserController extends Controller
                 Session::put('name', $user->name);
                 Session::put('id', $user->id);
                 if($user->roles == true){
+                    Session::put('role', $user->roles);
                     return Redirect::to('/dashboard');                
                 }else{
                      return redirect('/home/user=' . Session::get('id'));

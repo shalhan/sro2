@@ -32,7 +32,10 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+        <li class="active"><a href="{{url('/')}}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+        @if(Session::has('role'))
+        <li class="active"><a href="{{route('report')}}"><i class="fa fa-comment-o"></i> <span>Report</span></a></li>
+        @endif
       </ul>
       <!-- /.sidebar-menu -->
     </section>

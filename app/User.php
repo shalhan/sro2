@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Restitution');
     }
+
+    public function report()
+    {
+        return $this->hasManyThrough('App\Report', 'App\Restitution', 'user_id', 'restitusi_id', 'id');
+    }
 }

@@ -46,5 +46,8 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
-    }
+    },
+    "files": [
+        "app/Http/Helpers.php" 
+    ]
 }

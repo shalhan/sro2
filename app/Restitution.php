@@ -22,6 +22,6 @@ class Restitution extends Model
 
     public function report()
     {
-        return $this->hasMany('App\Message');
+        return $this->hasMany('App\Report');
     }
 }

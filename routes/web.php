@@ -55,6 +55,11 @@ Route::group(['middleware' => 'auth'], function(){
         ]);
     });
 
+     Route::get('/report',[
+            'uses' => 'ReportController@indexReport',
+            'as' => 'report'
+        ]);
+
     Route::group(['prefix' => 'home'], function () {
          Route::get('/user={id}',[
             'uses' => 'RestitutionController@showRestitution',

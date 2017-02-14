@@ -12,7 +12,6 @@ class Report extends Model
 
     public function restitution()
     {
-        return $this->belongsTo('App\Restitution');
+        return $this->belongsTo('App\Restitution', 'restitusi_id');
     }
-
 }
