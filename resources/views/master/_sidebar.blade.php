@@ -38,7 +38,7 @@
         @else
         <li class="active"><a href="{{route('/')}}"><i class="fa fa-tachometer"></i> <span>Beranda</span></a></li>
         <li class="active"><a href="{{route('location')}}"><i class="fa fa-map-marker"></i> <span>Lokasi</span></a></li>
-        <li class="active"><a href="{{route('/')}}"><i class="fa fa-file-text-o"></i> <span>Informasi</span></a></li>
+        <li class="active"><a href="{{route('info')}}"><i class="fa fa-file-text-o"></i> <span>Informasi</span></a></li>
         @endif
       </ul>
       <!-- /.sidebar-menu -->
