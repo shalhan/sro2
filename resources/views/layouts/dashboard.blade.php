@@ -16,10 +16,10 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>NIP</th>
-                            <th>Jabatan</th>
+                            <th>ID</th>
                             <th>Lokasi</th>
+                            <th>Nama</th>
+                            <th>Created at</th>
                             <th>Progress</th>
                             <th></th>
                         </tr>
@@ -27,10 +27,14 @@
                     <tbody>
                         @foreach($restitution as $r)
                         <tr>   
-                            <td>{{$r->user->name}}</td>
-                            <td>{{$r->user->nip}}</td>
-                            <td>{{$r->user->position}}</td>
+                             <?php  
+                                $date = explode(" ", $r->created_at); 
+                                $created_at = date("d-m-Y", strtotime($date[0]));
+                        ?>
+                            <td>{{$r->id}}</td>
                             <td>{{$r->title}}</td>
+                            <td>{{$r->user->name}}</td>
+                            <td>{{$created_at}}</td>
                             <td>{{$r->stat->id}}. {{$r->stat->detail}}</td>
                             <td><a href="{{url('dashboard/update/' . $r->id)}}"> NEXT </a></td>
                         </tr>

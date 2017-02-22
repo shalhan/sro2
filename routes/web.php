@@ -74,6 +74,11 @@ Route::group(['middleware' => 'auth'], function(){
         ]);
     });
 
+    Route::get('location', [
+        'uses' => 'LocationController@indexLocation',
+        'as' => 'location'
+    ]);
+
      Route::get('sign_out', [
         'uses' => 'UserController@getLogout',
         'as' => 'sign_out'
