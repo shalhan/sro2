@@ -41,6 +41,7 @@ class UserController extends Controller
     }
 
     public function indexSignIn(){
+        return view('login');
 
     }
 
@@ -57,24 +58,44 @@ class UserController extends Controller
                 ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
         } else {
             // create our user data for the authentication
-            $userdata = array(
-                'username'     => Input::get('username'),
-                'password'  => Input::get('password')
-            );
+        //     $userdata = array(
+        //         'username'     => Input::get('username'),
+        //         'password'  => Input::get('password')
+        //     );
 
-            if (Auth::attempt($userdata)) {
-                $user = Auth::user();
-                Session::put('name', $user->name);
-                Session::put('id', $user->id);
-                if($user->roles == true){
-                    Session::put('role', $user->roles);
-                    return Redirect::to('/dashboard');                
-                }else{
-                    return redirect('/home/user=' . Session::get('id'));
+        //     if (Auth::attempt($userdata)) {
+        //         $user = Auth::user();
+        //         Session::put('name', $user->name);
+        //         Session::put('id', $user->id);
+        //         if($user->roles == true){
+        //             Session::put('role', $user->roles);
+        //             return Redirect::to('/dashboard');                
+        //         }else{
+        //             return redirect('/home/user=' . Session::get('id'));
+        //         }
+        //    } else { 
+        //         return Redirect::to('/');
+        //     }
+                if (Auth::guard('admin')->attempt(['username' => Input::get('username'),
+                    'password'  => Input::get('password'), 'roles' => true])) {
+                    // echo "kamu admin";
+                    $user = Auth::user();
+                    print_r($user);
+                    // Session::put('name', $user->name);
+                    // Session::put('id', $user->id);
+                    // return redirect('/dashboard');
+                    //return Redirect::to('/dashboard');
+                }else if(Auth::guard('web')->attempt(['username' => Input::get('username'),
+                    'password'  => Input::get('password'), 'roles' => false])){
+                    $user = Auth::user();
+                    // print_r($user);
+                    
+                    Session::put('name', $user->name);
+                    Session::put('id', $user->id);
+                    // return redirect('/home/user=' . Session::get('id'));
+                }else {
+                    echo "eror huft";
                 }
-           } else { 
-                return Redirect::to('/');
-            }
         }
 
     }

@@ -10,10 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'guest'], function(){
-    Route::get('/', function () {
-        return view('login');
-    });
+Route::group(['middleware' => 'nonauth'], function(){
+    Route::get('/', [
+        'uses' => 'UserController@indexSignIn',
+        'as' => '/'
+    ]);
 
     Route::post('/sign_in',[
         'uses' => 'UserController@postSignIn',
@@ -33,7 +34,7 @@ Route::group(['middleware' => 'guest'], function(){
 });
 
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'admin'], function(){
     Route::group(['prefix' => 'dashboard'], function () {
         Route::get('/',[
             'uses' => 'RestitutionController@getAllRestitution',
@@ -54,7 +55,7 @@ Route::group(['middleware' => 'auth'], function(){
             'uses' => 'RestitutionController@updateRestitution',
         ]);
     });
-
+});
      Route::get('/report',[
             'uses' => 'ReportController@indexReport',
             'as' => 'report'
@@ -89,5 +90,4 @@ Route::group(['middleware' => 'auth'], function(){
         'as' => 'sign_out'
     ]);
 
-});
     
