@@ -32,7 +32,7 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        @if(Session::has('role'))
+        @if(Session::get('role') == true)
         <li class="active"><a href="{{route('/')}}"><i class="fa fa-tachometer"></i> <span>Beranda</span></a></li>
         <li class="active"><a href="{{route('report')}}"><i class="fa fa-comment-o"></i> <span>Report</span></a></li>
         @else
