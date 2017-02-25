@@ -70,7 +70,7 @@ class UserController extends Controller
                     Session::put('role', $user->roles);
                     return Redirect::to('/dashboard');                
                 }else{
-                     return redirect('/home/user=' . Session::get('id'));
+                    return redirect('/home/user=' . Session::get('id'));
                 }
            } else { 
                 return Redirect::to('/');

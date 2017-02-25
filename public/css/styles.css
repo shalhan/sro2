@@ -27,3 +27,9 @@
     font-size: 45px;
   }
 }
+
+.login-logo img.img-circle, .register-logo img.img-circle{
+  margin-left: 43%;
+}
+
+

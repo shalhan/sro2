@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset("/css/AdminLTE.min.css") }}">
+   <link rel="stylesheet" href="{{ asset("/css/styles.css") }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
@@ -30,7 +31,8 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>SRO</b> PLN</a>
+    <img src="{{ asset("/img/logo2.png") }}" class="img-circle img-responsive" alt="User Image">
+    <a href="{{url('/')}}"><b>SRO</b> PLN</a>
   </div>
 
   <div class="register-box-body">
