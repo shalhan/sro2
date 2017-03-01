@@ -53,6 +53,7 @@ Route::group(['middleware' => 'admin'], function(){
 
         Route::get('/update/{id}', [
             'uses' => 'RestitutionController@updateRestitution',
+            'as' => 'update.rest'
         ]);
     });
 });
@@ -64,14 +65,17 @@ Route::group(['middleware' => 'admin'], function(){
     Route::group(['prefix' => 'home'], function () {
          Route::get('/user={id}',[
             'uses' => 'RestitutionController@showRestitution',
+            'as' => 'user.home'
         ]);
 
         Route::get('/report={id}',[
-            'uses' => 'ReportController@newReport'
+            'uses' => 'ReportController@newReport',
+            'as' => 'report.rest'
         ]);
 
         Route::post('/report={id}/create',[
-            'uses' => 'ReportController@createReport'
+            'uses' => 'ReportController@createReport',
+            'as' => 'send.report.rest'
         ]);
     });
 

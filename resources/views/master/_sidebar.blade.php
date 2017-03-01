@@ -33,12 +33,12 @@
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
         @if(Session::get('role') == true)
-        <li class="active"><a href="{{route('/')}}"><i class="fa fa-tachometer"></i> <span>Beranda</span></a></li>
-        <li class="active"><a href="{{route('report')}}"><i class="fa fa-comment-o"></i> <span>Report</span></a></li>
+        <li class="{{ (Route::currentRouteName() == '/' ? 'active' : '') }}"><a href="{{route('/')}}"><i class="fa fa-tachometer"></i> <span>Beranda</span></a></li>
+        <li class="{{ (Route::currentRouteName() == 'report' ? 'active' : '') }}"><a href="{{route('report')}}"><i class="fa fa-comment-o"></i> <span>Report</span></a></li>
         @else
-        <li class="active"><a href="{{route('/')}}"><i class="fa fa-tachometer"></i> <span>Beranda</span></a></li>
-        <li class="active"><a href="{{route('location')}}"><i class="fa fa-map-marker"></i> <span>Lokasi</span></a></li>
-        <li class="active"><a href="{{route('info')}}"><i class="fa fa-file-text-o"></i> <span>Informasi</span></a></li>
+        <li class="{{ (Route::currentRouteName() == 'user.home' || Route::currentRouteName() == 'report.rest' ? 'active' : '') }}"><a href="{{route('/')}}"><i class="fa fa-tachometer"></i> <span>Beranda</span></a></li>
+        <li class="{{ (Route::currentRouteName() == 'location' ? 'active' : '') }}"><a href="{{route('location')}}"><i class="fa fa-map-marker"></i> <span>Lokasi</span></a></li>
+        <li class="{{ (Route::currentRouteName() == 'info' ? 'active' : '') }}"><a href="{{route('info')}}"><i class="fa fa-file-text-o"></i> <span>Informasi</span></a></li>
         @endif
       </ul>
       <!-- /.sidebar-menu -->

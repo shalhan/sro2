@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Restitution;
 use Session;
+use Route;
+
 
 class RestitutionController extends Controller
 {   
     public function getAllRestitution(){
         $restitution = Restitution::with(['user','stat'])->whereRaw('stat_id < 12')->get();
-        
+
         return view('layouts/dashboard', compact('restitution'));
     }
 
