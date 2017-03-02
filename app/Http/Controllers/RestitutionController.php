@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Location;
 use App\Restitution;
+use App\Information;
 use Session;
 use Route;
 
@@ -12,20 +14,23 @@ use Route;
 class RestitutionController extends Controller
 {   
     public function getAllRestitution(){
-        $restitution = Restitution::with(['user','stat'])->whereRaw('stat_id < 12')->get();
+        $restitution = Restitution::get();
 
         return view('layouts/dashboard', compact('restitution'));
     }
 
     public function newRestitution(){
         $user = User::where('roles', false)->get();
-        return view('layouts.new_restitution', compact('user'));
+        $location = Location::get();
+        $info = Information::where('status', 0)->get();
+        return view('layouts.new_restitution', compact('user', 'location', 'info'));
     }
 
     public function createRestitution(Request $r){
         $restitution = new Restitution([
             'user_id' => $r->input('name'),
-            'title' => $r->input('title'),
+            'location_id' => $r->input('nama_rs'),
+            'info_id' => $r->input('keluhan'),
             'stat_id' => 1
         ]);
 

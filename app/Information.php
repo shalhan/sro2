@@ -10,4 +10,9 @@ class Information extends Model
     protected $fillable = [
         'jenis', 'status'
     ];
+
+    public function restitutions()
+    {
+        return $this->hasMany('App\Restitution');
+    }
 }

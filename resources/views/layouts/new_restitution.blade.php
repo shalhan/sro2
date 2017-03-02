@@ -17,11 +17,7 @@
           <form action="{{route('create')}}" method="post">
              {{csrf_field()}}
                 <div class="box-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nama restitusi</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="title">
-                    </div>
-                   <div class="form-group">
+                 <div class="form-group">
                         <label>Nama pegawai</label>
                         <select class="form-control" name="name">
                             @foreach($user as $users)
@@ -29,6 +25,25 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>Rumah Sakit</label>
+                        <select class="form-control" name="nama_rs">
+                            <option>(Pilih lokasi rumah sakit)</option>
+                            @foreach($location as $locations)
+                                <option value="{{$locations->id}}">{{ $locations->nama_rs}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipe Pengobatan</label>
+                        <select class="form-control" name="keluhan">
+                            <option>(Jenis keluhan)</option>
+                            @foreach($info as $infos)
+                                <option value="{{$infos->id}}">{{ $infos->jenis}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  
                 </div>
                     <!-- /.box-body -->
 

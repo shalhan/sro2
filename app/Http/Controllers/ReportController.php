@@ -31,11 +31,6 @@ class ReportController extends Controller
 
     public function indexReport(){
         $report = Report::get();
-
-        // foreach($report as $r){
-            
-        //      echo date("d-m-Y", strtotime($date[0]));
-        // }
        
     
         return view('layouts.index_report', compact('report'));

@@ -32,7 +32,7 @@
                                 $created_at = date("d-m-Y", strtotime($date[0]));
                         ?>
                             <td>{{$r->id}}</td>
-                            <td>{{$r->title}}</td>
+                            <td>{{$r->location->nama_rs}}</td>
                             <td>{{$r->user->name}}</td>
                             <td>{{$created_at}}</td>
                             <td>{{$r->stat->id}}. {{$r->stat->detail}}</td>
