@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SROP | Log in</title>
+  <title>CROP | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -41,7 +41,7 @@
 @endif
   <div class="login-logo">
     <img src="{{ asset("/img/logo2.png") }}" class="img-circle img-responsive" alt="User Image">
-    <a href="{{url('/')}}"><b>SRO</b> PLN</a>
+    <a href="{{url('/')}}"><b>CRO</b> PLN</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

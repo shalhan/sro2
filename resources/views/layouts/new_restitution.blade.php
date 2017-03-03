@@ -35,9 +35,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Tipe Pengobatan</label>
+                        <label>Perawatan Kesehatan</label>
                         <select class="form-control" name="keluhan">
-                            <option>(Jenis keluhan)</option>
+                            <option>(Jenis perawatan kesehatan)</option>
                             @foreach($info as $infos)
                                 <option value="{{$infos->id}}">{{ $infos->jenis}}</option>
                             @endforeach

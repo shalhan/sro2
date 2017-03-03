@@ -14,7 +14,7 @@
                 </div>
                     <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example2" class="table table-bordered table-hover dataTable">
+                    <table id="example1" class="table table-bordered table-hover dataTable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -44,7 +44,7 @@
                 </div>
                     <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example1" class="table table-bordered table-hover dataTable">
+                    <table id="example3" class="table table-bordered table-hover dataTable">
                         <thead>
                             <tr>
                                 <th>No</th>
